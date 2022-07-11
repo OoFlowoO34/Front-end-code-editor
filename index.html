@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Code editor</title>
+    <style></style>
+    <script defer src="js/script.js"></script>
+
+    
+</head>
+<body>
+    <ul>
+        <li><button id="btDiv">div</button></li>
+        <li><button id="btP">p</button></li>
+        <li><button id="btButton">button</button></li>
+    </ul>
+    
+    <textarea placeholder="html" name="codeareaHtml" id="codeareaHtml" cols="30" rows="10" maxlength="200"  spellcheck="false"></textarea>
+    <textarea placeholder="css" name="codeareaCss" id="codeareaCss" cols="30" rows="10" maxlength="200"  spellcheck="false"></textarea>
+    <textarea placeholder="js" name="codeareaJs" id="codeareaJs" cols="30" rows="10" maxlength="200" spellcheck="false"></textarea>
+    <div>
+        <span id="lenghthtml"></span>
+        <span>/</span>
+        <span id="showmaxlength"></span>
+    </div>
+    <div id="progressBar"><div id="progressColor"></div></div>
+    <input type="text" id="inputMaxLength" name="name" required
+       minlength="4" maxlength="8" size="10">
+    <button id="lengthbutton">Valider</button>
+
+    <div id="resultcss"></div>
+    <div id="resulthtml"></div>
+
+    <script class="classScript"></script>
+</body>
+</html>

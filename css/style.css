@@ -1,0 +1,16 @@
+#resulthtml{
+    border: solid 1px black;
+}
+#progressBar{
+    height: 16px;
+    box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 100%;
+}
+
+#progressColor{
+    height: inherit;
+    border-radius: 10px;
+    width: 0%;
+    background-color: green;
+}
