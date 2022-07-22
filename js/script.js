@@ -6,13 +6,12 @@ To be added  =>
   var = myElement.selectionStart;
   var endPosition = myElement.selectionEnd;
   
-
+  var startPosition = myElement.selectionStart;
   const input = document.getElementById('text-box');
   input.focus();
 
-  input.setSelectionRange(startPosition,tartPosition);
+  input.setSelectionRange(startPosition,startPosition);
   console.log(startPosition );
-  
 */
 
 let getCodeAreaHtml = document.getElementById("codeareaHtml");
@@ -43,6 +42,13 @@ if (dataAutofocus == "js") {
   console.log("if js");
 }
 
+let dataCursor = sessionStorage.getItem("cursorStored");
+let convertdataCursor = JSON.parse(dataCursor);
+
+console.log("datacursor on load converted= " + convertdataCursor);
+getCodeAreaJs.setSelectionRange(convertdataCursor, convertdataCursor);
+console.log("datacursor on load= " + dataCursor);
+
 let convertDataHtml = JSON.parse(dataHtml);
 getCodeAreaHtml.value = convertDataHtml;
 getResulthtml.innerHTML = convertDataHtml;
@@ -56,9 +62,7 @@ console.log("convertDataJs= " + dataJs);
 getCodeAreaJs.value = convertDataJs;
 qryScript.innerHTML = convertDataJs;
 
-console.log(dataHtml);
-
-const autofocus = "autofocus";
+//console.log(dataHtml);
 
 //Get and show maxlength value on refresh
 let getAttMaxLength = getCodeAreaHtml.getAttribute("maxlength");
@@ -173,8 +177,14 @@ function addcss() {
 /* -- Add JS -- */
 getCodeAreaJs.addEventListener("keyup", addJs);
 function addJs() {
-  sessionStorage.setItem("autofocus", "js");
+  getCodeAreaJs.focus();
+  let cusrsorPos = getCodeAreaJs.selectionStart;
+  console.log("cusrsorPos= " + cusrsorPos);
+  let strCusrsorPos = JSON.stringify(cusrsorPos);
+  sessionStorage.setItem("cursorStored", strCusrsorPos);
+  console.log("strCusrsorPos= " + strCusrsorPos);
 
+  sessionStorage.setItem("autofocus", "js");
   if (getCodeAreaHtml.getAttribute("autofocus")) {
     getCodeAreaHtml.removeAttribute("autofocus");
   }
@@ -192,7 +202,19 @@ function addJs() {
   sessionStorage.setItem("jsStored", strgCodeAreaValueJs);
 
   qryScript.innerHTML = getCodeAreaValueJs;
+
   window.location.reload();
+  /*
+  let i = 0;
+  while (i < 50) {
+    setTimeout(i++, 100000);
+    console.log(i);
+    if (i >= 50) {
+      console.log("reload");
+      //window.location.reload();
+    }
+  }
+  */
 }
 
 /* -- Modify MAX length --  */
